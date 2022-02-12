@@ -1,0 +1,14 @@
+Direct player attention using
+motion, lighting
+For example, the enemy cursor can hover over the enemy
+or active player can have an outline
+
+from Adam Chandler:
+I know I mentioned some things in class, especially related to subtle animations and hilighting to focus the players attention. 
+I still think that's the biggest thing you can do to improve. Has a very Deltarune vibe, in a good way. 
+Cap %'s at whole numbers. Man I really think that just having 1 or 2 different sprite poses (like an attack pose, 
+or a taking damage pose) that you could swap at key moments would really bring your prototype to life. 
+Have I just got to the presentation and saw you mention Deltarune. I think that means you accomplished your goal.
+
+Good job. This is something you could keep working on. Add more visual particles and whatnot for gamefeel to if you can.
+
