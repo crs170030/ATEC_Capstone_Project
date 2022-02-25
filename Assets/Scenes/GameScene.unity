@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 9, y: 30}
+  m_AnchoredPosition: {x: 28, y: 30}
   m_SizeDelta: {x: 215.14789, y: 30.602997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &54288683
@@ -499,7 +499,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.2899933, y: 0}
   m_SizeDelta: {x: -12.864563, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1009,11 +1009,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.5
-  m_Text: 'Help Frisby, Gus, and Agnes fend off attacking bugs!
+  m_Text: 'Help Kazimir, Phoebe, and Monch fend off attacking villagers!
 
 
-    Use WASD or
-    the Arrow Keys to navigate the menus.
+    Use
+    WASD or the Arrow Keys to navigate the menus.
 
     Press Space or Z to Confirm
 
@@ -1070,7 +1070,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00010157, y: 0.00002861}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1024, y: 575.8668}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &489541247
@@ -1228,7 +1228,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -100}
+  m_AnchoredPosition: {x: 0, y: -72}
   m_SizeDelta: {x: 436.63638, y: 103.785034}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &686104712
@@ -1251,10 +1251,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: e4f4bc37776d6de4382fffe449a04c80, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 3
     m_MaxSize: 60
     m_Alignment: 4
@@ -1539,7 +1539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &819895480
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1849,7 +1849,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -153.27, y: 0}
+  m_AnchoredPosition: {x: -163, y: 0}
   m_SizeDelta: {x: 83.482895, y: 35.783295}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1041429684
@@ -1884,7 +1884,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Agnes
+  m_Text: Monch
 --- !u!222 &1041429685
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2001,8 +2001,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -153.27, y: 0}
-  m_SizeDelta: {x: 83.482895, y: 35.783295}
+  m_AnchoredPosition: {x: -164, y: 0}
+  m_SizeDelta: {x: 100, y: 35.783295}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1211800452
 MonoBehaviour:
@@ -2025,7 +2025,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: e4f4bc37776d6de4382fffe449a04c80, type: 3}
-    m_FontSize: 25
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -2036,7 +2036,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Gus
+  m_Text: Pheoebe
 --- !u!222 &1211800453
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2103,7 +2103,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 42de756ad2344f74585cf1fd320e8e76, type: 3}
-    m_FontSize: 200
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -2114,7 +2114,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Mice Fight
+  m_Text: Monsters Skip Town
 --- !u!222 &1224409138
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2399,7 +2399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1372001794
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2422,7 +2422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00048828125, y: -0.49987793}
+  m_AnchoredPosition: {x: 0.00048828125, y: -0.49975586}
   m_SizeDelta: {x: -2.0009766, y: -1.0004883}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1382563347 stripped
@@ -2477,8 +2477,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -61.5, y: 58.8}
-  m_SizeDelta: {x: 81.22725, y: 159.85541}
+  m_AnchoredPosition: {x: -69, y: 58}
+  m_SizeDelta: {x: 58.73735, y: 159.85541}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1388927180
 MonoBehaviour:
@@ -2501,7 +2501,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: e235b8e363a3baa4f97e6eb37608e426, type: 3}
-    m_FontSize: 30
+    m_FontSize: 20
     m_FontStyle: 2
     m_BestFit: 1
     m_MinSize: 0
@@ -2653,7 +2653,7 @@ GameObject:
   - component: {fileID: 1540350816}
   - component: {fileID: 1540350815}
   m_Layer: 5
-  m_Name: agnes_img
+  m_Name: monch_img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2675,8 +2675,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -400, y: 150}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -470, y: 212.5}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1540350815
 MonoBehaviour:
@@ -2697,7 +2697,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f0b687b2e91a10a45a48f9c7a964bc27, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b8741e80012dd04f987710d5a22fdec, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2749,7 +2749,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 99, y: 50}
+  m_AnchoredPosition: {x: 91, y: 63}
   m_SizeDelta: {x: 73.65149, y: 153.04935}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1543051764
@@ -2773,7 +2773,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 42de756ad2344f74585cf1fd320e8e76, type: 3}
-    m_FontSize: 40
+    m_FontSize: 20
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -3230,7 +3230,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -650.4, y: 410}
-  m_SizeDelta: {x: 130.02756, y: 100}
+  m_SizeDelta: {x: 195, y: 150}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1826713795
 MonoBehaviour:
@@ -3536,7 +3536,7 @@ GameObject:
   - component: {fileID: 1895039517}
   - component: {fileID: 1895039516}
   m_Layer: 5
-  m_Name: frisby_img
+  m_Name: kazimir_img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3558,8 +3558,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 250, y: 30}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 252, y: 25}
+  m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1895039516
 MonoBehaviour:
@@ -3580,7 +3580,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 07623f0e25aee1c4a9c6d2b76add35b1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 35f62cf47dc98ad4d898b758bc897393, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3684,7 +3684,7 @@ GameObject:
   - component: {fileID: 1951148343}
   - component: {fileID: 1951148342}
   m_Layer: 5
-  m_Name: gus_img
+  m_Name: phoebe_img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3706,8 +3706,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 200}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -0.477, y: 212.5}
+  m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1951148342
 MonoBehaviour:
@@ -3728,7 +3728,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 743c73e3d7b49e147ac50e8ac654e4c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 790ad9e6d8143b448b189de5026aaedd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4020,7 +4020,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Frisby
+  m_Text: Kasimir
 --- !u!222 &2093553706
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4082,27 +4082,37 @@ PrefabInstance:
     - target: {fileID: 2938094405987638637, guid: 7f0706f003413154b9176fd650b55f28,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 225
       objectReference: {fileID: 0}
     - target: {fileID: 2938094405987638637, guid: 7f0706f003413154b9176fd650b55f28,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 2938094405987638637, guid: 7f0706f003413154b9176fd650b55f28,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2938094405987638637, guid: 7f0706f003413154b9176fd650b55f28,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2938094405998229480, guid: 7f0706f003413154b9176fd650b55f28,
         type: 3}
       propertyPath: m_Name
-      value: Agnes_player
+      value: Monch_player
       objectReference: {fileID: 0}
     - target: {fileID: 2938094405998229481, guid: 7f0706f003413154b9176fd650b55f28,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -243
+      value: -436
       objectReference: {fileID: 0}
     - target: {fileID: 2938094405998229481, guid: 7f0706f003413154b9176fd650b55f28,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -89
+      value: -73
       objectReference: {fileID: 0}
     - target: {fileID: 2938094405998229481, guid: 7f0706f003413154b9176fd650b55f28,
         type: 3}
@@ -4161,22 +4171,32 @@ PrefabInstance:
     - target: {fileID: 3037205678980908110, guid: 6556a8ec12639f440a59ea9f802ed990,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 150
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 3037205678980908110, guid: 6556a8ec12639f440a59ea9f802ed990,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 150
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037205678980908110, guid: 6556a8ec12639f440a59ea9f802ed990,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037205678980908110, guid: 6556a8ec12639f440a59ea9f802ed990,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3037205679901997314, guid: 6556a8ec12639f440a59ea9f802ed990,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -269
+      value: -316
       objectReference: {fileID: 0}
     - target: {fileID: 3037205679901997314, guid: 6556a8ec12639f440a59ea9f802ed990,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 52
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 3037205679901997314, guid: 6556a8ec12639f440a59ea9f802ed990,
         type: 3}
@@ -4226,7 +4246,7 @@ PrefabInstance:
     - target: {fileID: 3037205679901997315, guid: 6556a8ec12639f440a59ea9f802ed990,
         type: 3}
       propertyPath: m_Name
-      value: Gus_player
+      value: Phoebe_player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6556a8ec12639f440a59ea9f802ed990, type: 3}
@@ -4237,25 +4257,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 457984792}
     m_Modifications:
-    - target: {fileID: 5724718165679265413, guid: 94062b99e13cb494e9b7e1ec92260f2f,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5724718165679265413, guid: 94062b99e13cb494e9b7e1ec92260f2f,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 5724718166413658764, guid: 94062b99e13cb494e9b7e1ec92260f2f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -229
+      value: -213
       objectReference: {fileID: 0}
     - target: {fileID: 5724718166413658764, guid: 94062b99e13cb494e9b7e1ec92260f2f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 200
+      value: 133
       objectReference: {fileID: 0}
     - target: {fileID: 5724718166413658764, guid: 94062b99e13cb494e9b7e1ec92260f2f,
         type: 3}
@@ -4305,7 +4315,7 @@ PrefabInstance:
     - target: {fileID: 5724718166413658765, guid: 94062b99e13cb494e9b7e1ec92260f2f,
         type: 3}
       propertyPath: m_Name
-      value: Frisby_player
+      value: Kasimir_player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94062b99e13cb494e9b7e1ec92260f2f, type: 3}

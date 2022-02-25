@@ -17,7 +17,7 @@ public class SetupBattleState : BattleState
     float enemyStartSpawnY = Screen.height - Screen.height/6;
     float enemySpacing = Screen.height/5;
     
-    float playerX = -400;
+    //float playerX = -600;
     float enemyX = Screen.width - Screen.width/5;
     bool _activated = false;
 
@@ -28,6 +28,11 @@ public class SetupBattleState : BattleState
         StateMachine.enemiesLeft = _numberOfEnemies;
         StateMachine.BattleUI.SetActive(true);
 
+        //make sure enemy has correct screen height
+        enemyStartSpawnY = Screen.height - Screen.height / 6;
+        enemySpacing = Screen.height / 5;
+        enemyX = Screen.width - Screen.width / 5;
+        //Debug.Log("enemy X ==" + enemyX);
         SpawnCharacters();
         //restore health of all
         var entities = FindObjectsOfType<HealthBase>();
@@ -69,7 +74,7 @@ public class SetupBattleState : BattleState
 
         //spawn enemies
         var spawnY = enemyStartSpawnY;
-        var spawnPosition = new Vector3(playerX, spawnY, 0);
+        var spawnPosition = new Vector3(0, 0, 0);//Vector3(playerX, spawnY, 0);
         var offsetX = 0;
 
         for (int i = 0; i < _numberOfEnemies; i++)
