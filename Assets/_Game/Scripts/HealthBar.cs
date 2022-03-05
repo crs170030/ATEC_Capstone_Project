@@ -20,8 +20,10 @@ public class HealthBar : MonoBehaviour
         {
             //subscribe to damage event
             _hb.Damaged += LowerHealth;
+            //subscribe to max heal event
+            _hb.ToMaxHealth += SetMaxHealth;
             //subscribe to heal event
-            _hb.Healed += SetMaxHealth;
+            _hb.Healed += AddHealth;
         }
         else
         {
@@ -36,6 +38,13 @@ public class HealthBar : MonoBehaviour
         slider.value = health;
 
         fill.color = gradient.Evaluate(1f);
+    }
+
+    public void AddHealth(float health)
+    {
+        slider.value += health;
+
+        fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 
     public void LowerHealth(float health)

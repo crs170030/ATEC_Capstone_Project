@@ -26,6 +26,7 @@ public class PlayerTurnPlanState : BattleState
     [SerializeField] CharacterBase _char3 = null;
     int activeCharNum = 1;
     CharacterBase activeChar = null;
+    HealthBase activeCharHB = null;
     int selectMode = 0; //0-select action, 1-select target
     EnemyBase[] enemies = null;
     EnemyBase activeTarget = null;
@@ -90,14 +91,15 @@ public class PlayerTurnPlanState : BattleState
             //if not, play sound
             if (activeChar._attackPlan == "magic")
             {
-                if (StateMachine.mana < activeChar.spellCost)
+                if (activeCharHB.currentHealth < activeChar.spellCost)
                 {
                     AudioHelper.PlayClip2D(_noCanDoSound, .5f);
-                    return; //don't continue if magic is too low!
+                    return; //don't continue if health is too low!
                 }
                 else
                 {
-                    StateMachine.mana -= activeChar.spellCost; //deduct magic points from total!
+                    //activeCharHB.currentHealth -= activeChar.spellCost; //deduct magic points from total!
+                    activeCharHB.ReduceHealth(activeChar.spellCost);
                 }
             }
             
@@ -112,7 +114,8 @@ public class PlayerTurnPlanState : BattleState
             }
             if (activeChar.defending)
             {
-                StateMachine.mana += defenseManaAmount;
+                //StateMachine.mana += defenseManaAmount;
+                activeCharHB.restoreHealth(defenseManaAmount);
                 OnPressedConfirm();
             }
         }
@@ -174,9 +177,12 @@ public class PlayerTurnPlanState : BattleState
             if (activeChar.defending)
             {
                 //try to make sure previous character is alive before removing mana
-                if((activeChar == _char2 && _char1.alive) || (activeChar == _char3 && _char2.alive) 
+                if ((activeChar == _char2 && _char1.alive) || (activeChar == _char3 && _char2.alive)
                     || (activeChar == _char3 && _char1.alive) || activeChar == _char1)
-                    StateMachine.mana -= defenseManaAmount;
+                {
+                    //StateMachine.mana -= defenseManaAmount;
+                    activeCharHB.ReduceHealth(defenseManaAmount);
+                }
                 OnPressedCancel();
             }
         }
@@ -187,7 +193,10 @@ public class PlayerTurnPlanState : BattleState
             _actionUI.SetActive(true);
             _selectionEnemy.gameObject.SetActive(false);
             if (activeChar._attackPlan == "magic")
-                StateMachine.mana += activeChar.spellCost;
+            {
+                //StateMachine.mana += activeChar.spellCost;
+                activeCharHB.restoreHealth(activeChar.spellCost);
+            }
         }
     }
 
@@ -402,6 +411,9 @@ public class PlayerTurnPlanState : BattleState
                 }
                 break;
         }
+        //get active char healthbase
+        if(activeChar != null)
+            activeCharHB = activeChar.GetComponent<HealthBase>();
         //SetActiveButtonValues("attack");
     }
 }

@@ -18,6 +18,7 @@ public class HealthBase : MonoBehaviour, IDamageable<float>
 
     public event Action<float> Damaged = delegate { };
     public event Action<float> Healed = delegate { };
+    public event Action<float> ToMaxHealth = delegate { };
     public event Action<int> HalfHealth = delegate { };
     public delegate void DeathEvent();
     public event DeathEvent OnDeath;
@@ -27,10 +28,18 @@ public class HealthBase : MonoBehaviour, IDamageable<float>
         restoreHealth();
     }
 
-    public void restoreHealth()
+    public void restoreHealth(float restoreAmount = 100f)
     {
-        currentHealth = maxHealth;
-        Healed.Invoke(maxHealth);
+        if (restoreAmount == 100f)
+        {
+            currentHealth = maxHealth;
+            ToMaxHealth.Invoke(maxHealth);
+        }
+        else
+        {
+            currentHealth += restoreAmount;
+            Healed.Invoke(restoreAmount);
+        }
         //Debug.Log(this.name + " health restored!");
         var charBase = GetComponent<CharacterBase>();
         if (charBase != null)
@@ -51,8 +60,8 @@ public class HealthBase : MonoBehaviour, IDamageable<float>
         //ouch chihuahua
         //OnTakeDamage?.Invoke();
         Damaged.Invoke(damageTaken);
-
         currentHealth -= damageTaken;
+
         if (currentHealth <= (maxHealth / 2) && !calledHalfHealth)//call half health warnings
         {
             AtHalfHeath();
@@ -72,6 +81,24 @@ public class HealthBase : MonoBehaviour, IDamageable<float>
             if (_hurtSound != null)
                 AudioHelper.PlayClip2D(_hurtSound, .7f);
         }
+        
+    }
+
+    public virtual void ReduceHealth(float reduceAmount)
+    {
+        //take damage without going through hurt
+        Damaged.Invoke(reduceAmount);
+        currentHealth -= reduceAmount;
+
+        if (currentHealth <= (maxHealth / 2) && !calledHalfHealth)//call half health warnings
+        {
+            AtHalfHeath();
+            calledHalfHealth = true;
+        }
+
+        //try to safeguard in case the health is too low
+        if (currentHealth <= 0)
+            currentHealth = 1;
     }
 
     public void Kill()
