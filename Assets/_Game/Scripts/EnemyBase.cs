@@ -6,6 +6,8 @@ public class EnemyBase : MonoBehaviour
 {
     public HealthBase[] TargetGroup = null;
     public float baseDamage = 25;
+    //public int Resolve = 100;
+    float runSpeed = 10f;
 
     // Start is called before the first frame update
     void Start()
@@ -49,5 +51,17 @@ public class EnemyBase : MonoBehaviour
     {
         //TargetGroup.Clear();
         TargetGroup = null;
+    }
+
+    public void RunAway()
+    {
+        //TODO: More Elaborate Run away effect
+
+        //move the enemy stage right until offscreen
+        while (transform.position.x < 2000)
+            transform.position += new Vector3(runSpeed, 0, 0);
+
+        //destroy the enemy
+        Destroy(gameObject, 0.5f);
     }
 }

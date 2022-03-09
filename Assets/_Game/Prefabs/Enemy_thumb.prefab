@@ -84,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7458133728218697779}
   - component: {fileID: 7458133728218697781}
-  - component: {fileID: 7458133728218697780}
+  - component: {fileID: 6064428931075279768}
   m_Layer: 5
   m_Name: Enemy_thumb
   m_TagString: Untagged
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetGroup: []
   baseDamage: 75
---- !u!114 &7458133728218697780
+--- !u!114 &6064428931075279768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7458133728218697778}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb4b84c309108264484f5c2979ad3df9, type: 3}
+  m_Script: {fileID: 11500000, guid: 28748dc7ff63ced40a6afdf8caf44fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
@@ -145,3 +145,5 @@ MonoBehaviour:
   _hurtSound: {fileID: 8300000, guid: fed4ab7b2c0007b4db209206a6cd67f9, type: 3}
   currentHealth: 0
   flashActive: 1
+  Resolve: 100
+  eb: {fileID: 7458133728218697781}

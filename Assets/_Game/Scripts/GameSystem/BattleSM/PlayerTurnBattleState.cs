@@ -119,9 +119,9 @@ public class PlayerTurnBattleState : BattleState
         // if not, then assign to first enemy on list
         if (activeChar.TargetGroup[0] == null) {
             EnemyBase newEnemy = FindObjectOfType<EnemyBase>();
-            HealthBase newEnemyHB = null;
+            EnemyResources newEnemyHB = null;
             if(newEnemy != null)
-                newEnemyHB = newEnemy.GetComponent<HealthBase>();
+                newEnemyHB = newEnemy.GetComponent<EnemyResources>();
             if(newEnemyHB != null)
             {
                 //Debug.Log("Player " + activeChar + " Target Group == " + activeChar.TargetGroup[0]);

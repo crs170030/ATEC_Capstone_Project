@@ -102,7 +102,6 @@ public class PlayerTurnPlanState : BattleState
                     activeCharHB.ReduceHealth(activeChar.spellCost);
                 }
             }
-            
 
             selectMode = 1;
             _actionUI.SetActive(false);
