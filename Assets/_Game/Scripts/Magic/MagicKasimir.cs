@@ -14,21 +14,8 @@ public class MagicKasimir : MagicBase
         SpellCost = new int[] { 20, 35 };
     }
 
-    public override void CastSpell(int spellID, HealthBase[] TargetGroup = null)
+    public override void CastSpell(int spellID, List<HealthBase> TargetGroup = null)
     {
-        /*
-        int spellDamage = 75;
-        //takes list of targets and applies effects to them
-        //each character needs a different spell, use switch statement on parent name?
-        foreach (HealthBase target in TargetGroup)
-        {
-            Debug.Log(this.name + " uses " + SpellCost[spellID] + " mana to cast a spell on " + target
-                + " dealing " + spellDamage + " damage.");
-            target.TakeDamage(spellDamage);
-        }
-        //in characterbase (from where its called), make sure to clear Targets
-        */
-
         switch (spellID)
         {
             default: // ID == 0
@@ -39,7 +26,7 @@ public class MagicKasimir : MagicBase
 
                     if (er != null)
                     {
-                        Debug.Log("MagicKasimir:" + this.name + " uses " + SpellCost[spellID] + " health to cast a spell on " + target
+                        Debug.Log("MagicKasimir:" + this.name + " uses " + SpellCost[spellID] + " health to cast " + SpellNames[spellID] + " on " + target
                             + " to scare them for " + CapeFlipPower + " resolve.");
                         er.ReduceResolve(CapeFlipPower);
                     }
@@ -51,7 +38,7 @@ public class MagicKasimir : MagicBase
                 // Snack Attack Spell!
                 foreach (HealthBase target in TargetGroup)
                 {
-                    Debug.Log("MagicKasimir:" + this.name + " uses " + SpellCost[spellID] + " health to bite a spell on " + target
+                    Debug.Log("MagicKasimir:" + this.name + " uses " + SpellCost[spellID] + " health to cast " + SpellNames[spellID] + " on " + target
                         + " dealing " + SnackAttackPower + " damage.");
                     target.TakeDamage(SnackAttackPower);
                     //TODO: Add health recovery for all alive players??

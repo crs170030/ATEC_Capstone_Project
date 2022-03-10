@@ -28,7 +28,8 @@ public class MagicBase : MonoBehaviour
         SpellCost = new int[] { 25, 35 };
     }
 
-    public virtual void CastSpell(int spellID, HealthBase[] TargetGroup = null)
+    //(int spellID, HealthBase[] TargetGroup = null)
+    public virtual void CastSpell(int spellID, List<HealthBase> TargetGroup = null)
     {
         int spellDamage = 75;
         //takes list of targets and applies effects to them

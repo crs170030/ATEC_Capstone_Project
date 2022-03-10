@@ -18,7 +18,8 @@ public class CharacterBase : MonoBehaviour, ICharacterCommand
     public float defense = 3;
     //float mana = 0;
     //float maxMana = 50;
-    public HealthBase[] TargetGroup = null;
+    //public HealthBase[] TargetGroup = null;
+    public List<HealthBase> TargetGroup = new List<HealthBase>();
     public MagicBase charMagic = null;
     //ref to change state machine tracker
 
@@ -83,15 +84,29 @@ public class CharacterBase : MonoBehaviour, ICharacterCommand
 
     public void AddTarget(HealthBase target)
     {
-        //TargetGroup.Add(target);
-        TargetGroup = new HealthBase[1];
-        TargetGroup[0] = target;
+        ClearTargets();
+        TargetGroup.Add(target);
+        //TargetGroup = new HealthBase[1];
+        //TargetGroup[0] = target;
+    }
+
+    public void AddTargets(HealthBase target)
+    {
+        /*
+        int currentSize = TargetGroup.Length;
+        HealthBase[] tempTargetGroup = TargetGroup;
+        TargetGroup = new HealthBase[currentSize];
+        TargetGroup = tempTargetGroup;
+        TargetGroup[currentSize - 1] = target;
+        */
+        TargetGroup.Add(target);
+        //Debug.Log(TargetGroup);
     }
 
     void ClearTargets()
     {
-        //TargetGroup.Clear();
-        TargetGroup = null;
+        TargetGroup.Clear();
+        //TargetGroup = null;
     }
 
     public void ToggleAppearance()

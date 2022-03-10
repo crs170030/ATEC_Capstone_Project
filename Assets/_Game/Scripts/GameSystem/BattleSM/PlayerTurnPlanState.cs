@@ -39,7 +39,7 @@ public class PlayerTurnPlanState : BattleState
     int activeTargetNum = 0;
     public float defenseManaAmount = 20f;
     float buttonDistance = 20f;
-    float magicButtonOffset = -140f;
+    float magicButtonOffset = -170f;
 
     //[SerializeField] float _damageAmount = 25f;
 
@@ -147,9 +147,9 @@ public class PlayerTurnPlanState : BattleState
                 else
                 {
                     //activeCharHB.currentHealth -= activeChar.spellCost; //deduct magic points from total!
-                    activeCharHB.ReduceHealth(activeChar.spellCost);
+                    //activeCharHB.ReduceHealth(activeChar.spellCost);
                     activeChar.chosenSpellID = menuSelectedSpellID;
-                    //activeCharHB.ReduceHealth(activeChar.charMagic.SpellCost[activeChar.chosenSpellID]);
+                    activeCharHB.ReduceHealth(activeChar.charMagic.SpellCost[activeChar.chosenSpellID]);
                 }
                 //and go to selectmode 1
 
@@ -234,15 +234,17 @@ public class PlayerTurnPlanState : BattleState
         }
         else
         {
-            //if 1, go back to action selection
+            //if 1 or 2, go back to action selection
             selectMode = 0;
             _actionUI.SetActive(true);
             _selectionEnemy.gameObject.SetActive(false);
             if (activeChar._attackPlan == "magic")
             {
                 //StateMachine.mana += activeChar.spellCost;
-                activeCharHB.restoreHealth(activeChar.spellCost);
+                activeCharHB.restoreHealth(activeChar.charMagic.SpellCost[menuSelectedSpellID]);
+                _magicUI.SetActive(false);
             }
+            
         }
     }
 
@@ -318,6 +320,7 @@ public class PlayerTurnPlanState : BattleState
                 menuSelectedSpellID = 0;
                 _selectMagicBorder.transform.position = _magicBut1.transform.position + new Vector3(magicButtonOffset, 0, 0);
             }
+            activeChar.chosenSpellID = menuSelectedSpellID; //make sure current char is updated with selection!
         }
     }
 
@@ -351,6 +354,7 @@ public class PlayerTurnPlanState : BattleState
                 menuSelectedSpellID = 0;
                 _selectMagicBorder.transform.position = _magicBut1.transform.position + new Vector3(magicButtonOffset, 0, 0);
             }
+            activeChar.chosenSpellID = menuSelectedSpellID; //make sure current char is updated with selection!
         }
     }
     
