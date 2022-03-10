@@ -14,22 +14,19 @@ public class CharacterBase : MonoBehaviour, ICharacterCommand
     public float spellDamage = 50;
     public bool alive = true;
     public bool defending = false;
+    public int chosenSpellID = 0;
     public float defense = 3;
     //float mana = 0;
     //float maxMana = 50;
     public HealthBase[] TargetGroup = null;
+    public MagicBase charMagic = null;
     //ref to change state machine tracker
 
     // Start is called before the first frame update
     void Start()
     {
         _attackPlan = "none";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        charMagic = GetComponent<MagicBase>();
     }
 
     public void SetAction(string attackPlan)
@@ -65,12 +62,22 @@ public class CharacterBase : MonoBehaviour, ICharacterCommand
     {
         //takes list of targets and applies effects to them
         //each character needs a different spell, use switch statement on parent name?
-        foreach (HealthBase target in TargetGroup)
+        if(charMagic != null)
         {
-            Debug.Log(this.name + " uses " + spellCost + " mana to cast a spell on " + target 
-                + " dealing " + spellDamage + " damage.");
-            target.TakeDamage(spellDamage);
+            charMagic.CastSpell(chosenSpellID, TargetGroup);
         }
+        else
+        {
+            //TEMPORARY MAGIC SPELL
+            Debug.Log("ERROR: " + this.name + " has to cast a default spell!");
+            foreach (HealthBase target in TargetGroup)
+            {
+                Debug.Log(this.name + " uses " + spellCost + " mana to cast a spell on " + target
+                    + " dealing " + spellDamage + " damage.");
+                target.TakeDamage(spellDamage);
+            }
+        }
+
         ClearTargets();
     }
 

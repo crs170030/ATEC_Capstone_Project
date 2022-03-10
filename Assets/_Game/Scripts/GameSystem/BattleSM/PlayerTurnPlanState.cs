@@ -17,6 +17,12 @@ public class PlayerTurnPlanState : BattleState
     [SerializeField] Image _selectionPlayer = null;
     [SerializeField] Image _selectionEnemy = null;
 
+    [SerializeField] GameObject _magicUI = null;
+    [SerializeField] Image _selectMagicBorder = null;
+    [SerializeField] MagicButton _magicBut1 = null;
+    [SerializeField] MagicButton _magicBut2 = null;
+    int menuSelectedSpellID = 0;
+
     [SerializeField] AudioClip _selectSound = null;
     [SerializeField] AudioClip _confirmSound = null;
     [SerializeField] AudioClip _noCanDoSound = null;
@@ -33,6 +39,7 @@ public class PlayerTurnPlanState : BattleState
     int activeTargetNum = 0;
     public float defenseManaAmount = 20f;
     float buttonDistance = 20f;
+    float magicButtonOffset = -140f;
 
     //[SerializeField] float _damageAmount = 25f;
 
@@ -91,6 +98,47 @@ public class PlayerTurnPlanState : BattleState
             //if not, play sound
             if (activeChar._attackPlan == "magic")
             {
+                //change selectmode
+                selectMode = 2;
+
+                //enable magic menu
+                _magicUI.SetActive(true);
+                _actionUI.SetActive(false);
+                //update each magic button using active char magic base
+                _magicBut1.UpdateText(activeChar.charMagic);
+                _magicBut2.UpdateText(activeChar.charMagic);
+                //make sure selection is in first slot
+                menuSelectedSpellID = 0;
+                _selectMagicBorder.transform.position = _magicBut1.transform.position + new Vector3(magicButtonOffset, 0, 0);
+            }
+            else
+            {
+                selectMode = 1;
+
+                _actionUI.SetActive(false);
+                _selectionEnemy.gameObject.SetActive(true);
+                if (enemies.Length > 0)
+                {
+                    activeTarget = enemies[enemies.Length - 1];
+                    SetCharacterTarget(activeTarget);
+                }
+                if (activeChar.defending)
+                {
+                    //StateMachine.mana += defenseManaAmount;
+                    activeCharHB.restoreHealth(defenseManaAmount);
+                    OnPressedConfirm();
+                }
+            }
+        }
+        else
+        {
+            if (selectMode == 2)
+            {
+                //if 2, inside magic menu, go to select target (1)
+
+                //check if the currently selected button's cost is less than active char health
+                //if the health is less than, play audio and return
+                //else, update the player's plan
                 if (activeCharHB.currentHealth < activeChar.spellCost)
                 {
                     AudioHelper.PlayClip2D(_noCanDoSound, .5f);
@@ -100,48 +148,47 @@ public class PlayerTurnPlanState : BattleState
                 {
                     //activeCharHB.currentHealth -= activeChar.spellCost; //deduct magic points from total!
                     activeCharHB.ReduceHealth(activeChar.spellCost);
+                    activeChar.chosenSpellID = menuSelectedSpellID;
+                    //activeCharHB.ReduceHealth(activeChar.charMagic.SpellCost[activeChar.chosenSpellID]);
                 }
-            }
+                //and go to selectmode 1
 
-            selectMode = 1;
-            _actionUI.SetActive(false);
-            _selectionEnemy.gameObject.SetActive(true);
-            if (enemies.Length > 0)
-            {
-                activeTarget = enemies[enemies.Length-1];
-                SetCharacterTarget(activeTarget);
+                selectMode = 1;
+                _magicUI.SetActive(false);
+
+                _selectionEnemy.gameObject.SetActive(true);
+                if (enemies.Length > 0)
+                {
+                    activeTarget = enemies[enemies.Length - 1];
+                    SetCharacterTarget(activeTarget);
+                }
+
             }
-            if (activeChar.defending)
+            else
             {
-                //StateMachine.mana += defenseManaAmount;
-                activeCharHB.restoreHealth(defenseManaAmount);
-                OnPressedConfirm();
+                //if 1, got to next player
+                switch (activeCharNum)
+                {
+                    case 1://go to character 2
+                        SetNextActiveChar(2, true);
+                        break;
+
+                    case 2://go to character 3
+                        SetNextActiveChar(3, true);
+                        break;
+
+                    case 3://go to attack phase
+                           //Debug.Log("Attempt to Enter Player Attack State!");
+                        StateMachine.ChangeState(StateMachine.PlayerAttackState);
+                        break;
+                }
+                _selectionPlayer.transform.position = activeChar.transform.position;
+                selectMode = 0;
+                _actionUI.SetActive(true);
+                _selectionEnemy.gameObject.SetActive(false);
             }
+            AudioHelper.PlayClip2D(_confirmSound, .2f);
         }
-        else
-        {
-            //if 1, got to next player
-            switch (activeCharNum)
-            {
-                case 1://go to character 2
-                    SetNextActiveChar(2, true);
-                    break;
-
-                case 2://go to character 3
-                    SetNextActiveChar(3, true);
-                    break;
-
-                case 3://go to attack phase
-                    //Debug.Log("Attempt to Enter Player Attack State!");
-                    StateMachine.ChangeState(StateMachine.PlayerAttackState);
-                    break;
-            }
-            _selectionPlayer.transform.position = activeChar.transform.position;
-            selectMode = 0;
-            _actionUI.SetActive(true);
-            _selectionEnemy.gameObject.SetActive(false);
-        }
-        AudioHelper.PlayClip2D(_confirmSound, .2f);
     }
 
     void OnPressedCancel()
@@ -258,6 +305,19 @@ public class PlayerTurnPlanState : BattleState
             }
             activeTarget = enemies[activeTargetNum];
             SetCharacterTarget(activeTarget);
+        }else if(selectMode == 2)
+        {
+            //magic menu
+            if(menuSelectedSpellID == 0)
+            {
+                menuSelectedSpellID = 1;
+                _selectMagicBorder.transform.position = _magicBut2.transform.position + new Vector3(magicButtonOffset, 0, 0);
+            }
+            else
+            {
+                menuSelectedSpellID = 0;
+                _selectMagicBorder.transform.position = _magicBut1.transform.position + new Vector3(magicButtonOffset, 0, 0);
+            }
         }
     }
 
@@ -277,6 +337,20 @@ public class PlayerTurnPlanState : BattleState
             }
             activeTarget = enemies[activeTargetNum];
             SetCharacterTarget(activeTarget);
+        }
+        else if (selectMode == 2)
+        {
+            //magic menu
+            if (menuSelectedSpellID == 0)
+            {
+                menuSelectedSpellID = 1;
+                _selectMagicBorder.transform.position = _magicBut2.transform.position + new Vector3(magicButtonOffset, 0, 0);
+            }
+            else
+            {
+                menuSelectedSpellID = 0;
+                _selectMagicBorder.transform.position = _magicBut1.transform.position + new Vector3(magicButtonOffset, 0, 0);
+            }
         }
     }
     

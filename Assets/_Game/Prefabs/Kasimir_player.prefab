@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 5724718166413658764}
   - component: {fileID: 5724718166413658767}
   - component: {fileID: 5724718166413658766}
+  - component: {fileID: 1549446051622336259}
   m_Layer: 5
   m_Name: Kasimir_player
   m_TagString: Untagged
@@ -149,3 +150,24 @@ MonoBehaviour:
   _hurtSound: {fileID: 8300000, guid: 4ecc8014da7130a4d8b4f23f50a05310, type: 3}
   currentHealth: 0
   flashActive: 1
+--- !u!114 &1549446051622336259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5724718166413658765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 930e1e14677ba4849b19d8e0dcd54e09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpellNames:
+  - 
+  - 
+  SpellDesc:
+  - 
+  - 
+  SpellCost: 0000000000000000
+  CapeFlipPower: 100
+  SnackAttackPower: 50

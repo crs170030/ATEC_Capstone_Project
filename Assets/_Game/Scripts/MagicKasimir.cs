@@ -39,7 +39,7 @@ public class MagicKasimir : MagicBase
 
                     if (er != null)
                     {
-                        Debug.Log(this.name + " uses " + SpellCost[spellID] + " health to cast a spell on " + target
+                        Debug.Log("MagicKasimir:" + this.name + " uses " + SpellCost[spellID] + " health to cast a spell on " + target
                             + " to scare them for " + CapeFlipPower + " resolve.");
                         er.ReduceResolve(CapeFlipPower);
                     }
@@ -51,7 +51,7 @@ public class MagicKasimir : MagicBase
                 // Snack Attack Spell!
                 foreach (HealthBase target in TargetGroup)
                 {
-                    Debug.Log(this.name + " uses " + SpellCost[spellID] + " health to bite a spell on " + target
+                    Debug.Log("MagicKasimir:" + this.name + " uses " + SpellCost[spellID] + " health to bite a spell on " + target
                         + " dealing " + SnackAttackPower + " damage.");
                     target.TakeDamage(SnackAttackPower);
                     //TODO: Add health recovery for all alive players??
