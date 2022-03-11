@@ -48,6 +48,7 @@ public class PlayerTurnPlanState : BattleState
 
     public override void Enter()
     {
+        Debug.Log("Player Choose: screen width == " + Screen.width + " button x = " + _magicBut1.transform.position);
         //Debug.Log("Player Choose Action: ...Entering");
         _playerUI.SetActive(true);
         _actionUI.SetActive(true);
@@ -62,6 +63,7 @@ public class PlayerTurnPlanState : BattleState
         _resolveBar.gameObject.SetActive(false);
 
         activeTargetNum = 0;
+        magicButtonOffset = - Screen.width / 6.5f;
         //Debug.Log("first enemy = " + enemies[activeTargetNum]);
 
         _playerTurnCount++;
