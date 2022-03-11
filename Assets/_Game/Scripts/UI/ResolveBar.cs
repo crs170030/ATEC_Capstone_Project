@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MagicBar : MonoBehaviour
+public class ResolveBar : MonoBehaviour
 {
     public Slider slider;
     public Gradient gradient;
@@ -11,10 +11,10 @@ public class MagicBar : MonoBehaviour
     public Text barText;
 
     [SerializeField] BattleSM _bsm = null;
-    CharacterBase[] players = null;
-    HealthBase hb = null;
+    //CharacterBase[] players = null;
+    //HealthBase hb = null;
 
-    float pastMana = 35f;
+    //float pastMana = 35f;
 
     private void Awake()
     {
@@ -28,30 +28,11 @@ public class MagicBar : MonoBehaviour
         {
             Debug.Log("AAAH! BattleSM is Null!");
         }
-        //SetMaxMana(100f);
+        SetMaxResolve(100f);
 
-        //get alerted for player hurting
-        players = FindObjectsOfType<CharacterBase>();
-        foreach (CharacterBase charBase in players)
-        {
-            hb = charBase.GetComponent<HealthBase>();
-            if (hb != null)
-            {
-                hb.Damaged += PlayerHurt;
-            }
-        }
     }
 
-    public void FixedUpdate()
-    {
-        if(_bsm != null && _bsm.mana != pastMana)
-        {
-            pastMana = _bsm.mana;
-            ChangeValue(pastMana);
-        }
-    }
-
-    public void SetMaxMana(float health)
+    public void SetMaxResolve(float health)
     {
         //Debug.Log("Health bar maxed out at " + health);
         slider.maxValue = health;
@@ -73,8 +54,9 @@ public class MagicBar : MonoBehaviour
        //Debug.Log("Magic bar now at " + slider.value + " out of " + slider.maxValue);
     }
 
-    void PlayerHurt(float damageTaken)
+
+    public void SetNewTarget(EnemyResources enemy)
     {
-        _bsm.mana += damageTaken / 4;
+        ChangeValue((float)enemy.Resolve);
     }
 }

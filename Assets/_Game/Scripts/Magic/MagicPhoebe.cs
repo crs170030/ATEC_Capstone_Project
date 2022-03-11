@@ -13,7 +13,7 @@ public class MagicPhoebe : MagicBase
     {
         SpellNames = new string[] { "All Bark", "All Bite" };
         SpellDesc = new string[] { "Scares all enemies.", "Chomp at one enemy, hurt others for a bit." };
-        SpellCost = new int[] { 20, 35 };
+        SpellCost = new int[] { 30, 40 };
     }
 
     public override void CastSpell(int spellID, List<HealthBase> TargetGroup = null)

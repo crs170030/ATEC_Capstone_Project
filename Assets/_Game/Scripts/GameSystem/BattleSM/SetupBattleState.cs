@@ -15,7 +15,7 @@ public class SetupBattleState : BattleState
     //[SerializeField] float _playerStartHealth = 100;
 
     float enemyStartSpawnY = Screen.height - Screen.height/6;
-    float enemySpacing = Screen.height/5;
+    float enemySpacing = Screen.height/4.5f;
     
     //float playerX = -600;
     float enemyX = Screen.width - Screen.width/5;
@@ -30,9 +30,10 @@ public class SetupBattleState : BattleState
 
         //make sure enemy has correct screen height
         enemyStartSpawnY = Screen.height - Screen.height / 6;
-        enemySpacing = Screen.height / 5;
+        enemySpacing = Screen.height / 4.5f;
         enemyX = Screen.width - Screen.width / 5;
         //Debug.Log("enemy X ==" + enemyX);
+        //Debug.Log("enemy Y ==" + enemyStartSpawnY + " screen height == " + Screen.height);
         SpawnCharacters();
         //restore health of all
         var entities = FindObjectsOfType<HealthBase>();
@@ -80,7 +81,7 @@ public class SetupBattleState : BattleState
         for (int i = 0; i < _numberOfEnemies; i++)
         {
             if (i % 2 == 0)
-                offsetX = 25; //enemies are pushed to the right
+                offsetX = 100; //enemies are pushed to the right
             else
                 offsetX = 0;
 

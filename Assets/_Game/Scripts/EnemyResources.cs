@@ -3,15 +3,26 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(EnemyBase))]
 public class EnemyResources : HealthBase, IScareable<int>
 {
     public event Action<int> Scared = delegate { };
+    //public event Action<int> Infected = delegate { };
 
+    [SerializeField] Image _enemyImage = null;
+    
     public int Resolve = 100;
+    public bool hasStatusEffect = false;
+    public bool isInfected = false;
     //float runSpeed = 10f;
     [SerializeField] EnemyBase eb = null;
+
+    void OnAwake()
+    {
+        //Infected += ChangeSprite;
+    }
 
     public virtual void ReduceResolve(int reduceAmount)
     {
@@ -25,17 +36,16 @@ public class EnemyResources : HealthBase, IScareable<int>
             eb.RunAway(); //call run away method in enemybase
         }
     }
-    /*
-    public void RunAway()
+
+    public void ChangeSprite()
     {
-        //TODO: More Elaborate Run away effect
-
-        //move the enemy stage right until offscreen
-        while (transform.position.x < 2000)
-            transform.position += new Vector3(runSpeed, 0, 0);
-
-        //destroy the enemy
-        Destroy(gameObject, 0.5f);
+        if (isInfected)
+        {
+            if(_enemyImage != null)
+            {
+                //change image color to green
+                _enemyImage.color = new Color32(124, 198, 124, 255);
+            }
+        }
     }
-    */
 }

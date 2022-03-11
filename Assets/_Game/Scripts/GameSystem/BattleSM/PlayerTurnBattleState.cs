@@ -20,18 +20,22 @@ public class PlayerTurnBattleState : BattleState
     [SerializeField] CharacterBase _char1 = null;
     [SerializeField] CharacterBase _char2 = null;
     [SerializeField] CharacterBase _char3 = null;
+
+    [SerializeField] EnemyStatusConditions _enemyStatus = null;
     int activeCharNum = 1;
     CharacterBase activeChar = null;
     EnemyBase[] enemies = null;
     float hmove = 50f;
 
     bool _activated = false;
+    bool statusWorking = false;
 
     public override void Enter()
     {
         //Debug.Log("Player Attack: ...Entering");
         PlayerAttackTurnBegan?.Invoke();
 
+        statusWorking = false;
         activeCharNum = 1;
         activeChar = _char1;
         enemies = null;
@@ -105,8 +109,11 @@ public class PlayerTurnBattleState : BattleState
                 activeChar.transform.position = activeChar.transform.position + new Vector3(-hmove, 0, 0);
             }
             activeCharNum++;
+            //after player attacks, apply enemy status
+            //ApplyEnemyStatus();
             Outcome();
         }
+        
         PlayerAttackTurnEnded?.Invoke();
     }
 
@@ -157,11 +164,62 @@ public class PlayerTurnBattleState : BattleState
         }
         else
         {
-            //continue loop
+            //continue into next battle state
             if (activeCharNum >= 4)
-                StateMachine.ChangeState(StateMachine.EnemyAttackState);
+            {
+                //StateMachine.ChangeState(StateMachine.EnemyAttackState);
+                ApplyEnemyStatus();
+            }
         }
 
         PlayerAttackTurnEnded?.Invoke();
+    }
+
+    void ApplyEnemyStatus()
+    {
+        statusWorking = true;
+        EnemyResources er;
+
+        //enemies = FindObjectsOfType<EnemyBase>();
+        foreach (EnemyBase enemyBase in enemies)
+        {
+            //Debug.Log("Apply: enemybase =" + enemyBase);
+            er = enemyBase.GetComponent<EnemyResources>();
+            StartCoroutine(StatusPause(_pauseDuration, er));
+        }
+        statusWorking = false;
+    }
+
+    IEnumerator StatusPause(float pauseDuration, EnemyResources er)
+    {
+        if (er.hasStatusEffect)
+        {
+            if (_enemyStatus != null)
+            {
+                _enemyStatus.ApplyStatusConditions(er);
+
+                yield return new WaitForSeconds(pauseDuration);
+                //check if enemy died to status
+                EnemyBase[] tempEnemies = FindObjectsOfType<EnemyBase>();
+                StateMachine.enemiesLeft = tempEnemies.Length;
+            }
+        }
+        if (StateMachine.enemiesLeft <= 0)//StateMachine.attackPlan == "win"
+        {
+            StateMachine.ChangeState(StateMachine.Win);
+            PlayerAttackTurnEnded?.Invoke();
+        }
+        else
+        {
+            yield return new WaitForSeconds(pauseDuration / 2);
+
+            //Debug.Log("StatusPause: status working ==" + statusWorking);
+            if (!statusWorking)
+            {
+                //Outcome();
+                StateMachine.ChangeState(StateMachine.EnemyAttackState);
+                PlayerAttackTurnEnded?.Invoke();
+            }
+        }
     }
 }

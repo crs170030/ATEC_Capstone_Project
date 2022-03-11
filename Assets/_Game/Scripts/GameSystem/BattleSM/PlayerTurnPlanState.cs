@@ -22,6 +22,7 @@ public class PlayerTurnPlanState : BattleState
     [SerializeField] MagicButton _magicBut1 = null;
     [SerializeField] MagicButton _magicBut2 = null;
     int menuSelectedSpellID = 0;
+    [SerializeField] ResolveBar _resolveBar = null;
 
     [SerializeField] AudioClip _selectSound = null;
     [SerializeField] AudioClip _confirmSound = null;
@@ -39,7 +40,7 @@ public class PlayerTurnPlanState : BattleState
     int activeTargetNum = 0;
     public float defenseManaAmount = 20f;
     float buttonDistance = 20f;
-    float magicButtonOffset = -170f;
+    float magicButtonOffset = -160f;
 
     //[SerializeField] float _damageAmount = 25f;
 
@@ -58,6 +59,7 @@ public class PlayerTurnPlanState : BattleState
         enemies = FindObjectsOfType<EnemyBase>();
         _selectionEnemy.transform.position = enemies[0].transform.position;
         _selectionEnemy.gameObject.SetActive(false);
+        _resolveBar.gameObject.SetActive(false);
 
         activeTargetNum = 0;
         //Debug.Log("first enemy = " + enemies[activeTargetNum]);
@@ -117,6 +119,7 @@ public class PlayerTurnPlanState : BattleState
 
                 _actionUI.SetActive(false);
                 _selectionEnemy.gameObject.SetActive(true);
+                _resolveBar.gameObject.SetActive(true);
                 if (enemies.Length > 0)
                 {
                     activeTarget = enemies[enemies.Length - 1];
@@ -157,6 +160,7 @@ public class PlayerTurnPlanState : BattleState
                 _magicUI.SetActive(false);
 
                 _selectionEnemy.gameObject.SetActive(true);
+                _resolveBar.gameObject.SetActive(true);
                 if (enemies.Length > 0)
                 {
                     activeTarget = enemies[enemies.Length - 1];
@@ -186,6 +190,7 @@ public class PlayerTurnPlanState : BattleState
                 selectMode = 0;
                 _actionUI.SetActive(true);
                 _selectionEnemy.gameObject.SetActive(false);
+                _resolveBar.gameObject.SetActive(false);
             }
             AudioHelper.PlayClip2D(_confirmSound, .2f);
         }
@@ -219,7 +224,9 @@ public class PlayerTurnPlanState : BattleState
             _selectionPlayer.transform.position = activeChar.transform.position;
             _actionUI.SetActive(false);
             _selectionEnemy.gameObject.SetActive(true);
+            _resolveBar.gameObject.SetActive(true);
             selectMode = 1;
+
             if (activeChar.defending)
             {
                 //try to make sure previous character is alive before removing mana
@@ -238,6 +245,7 @@ public class PlayerTurnPlanState : BattleState
             selectMode = 0;
             _actionUI.SetActive(true);
             _selectionEnemy.gameObject.SetActive(false);
+            _resolveBar.gameObject.SetActive(false);
             if (activeChar._attackPlan == "magic")
             {
                 //StateMachine.mana += activeChar.spellCost;
@@ -411,6 +419,13 @@ public class PlayerTurnPlanState : BattleState
         if (targetHB != null) {
             //activeChar.TargetGroup[0] = targetHB;
             activeChar.AddTarget(targetHB);
+
+            //update resolve meter to new target
+            EnemyResources er = targetHB.GetComponent<EnemyResources>();
+            if(er != null)
+            {
+                _resolveBar.SetNewTarget(er);
+            }
         }
     }
 

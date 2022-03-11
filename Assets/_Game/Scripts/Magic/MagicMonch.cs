@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class MagicMonch : MagicBase
 {
-    public int CapeFlipPower = 100;
-    public float SnackAttackPower = 50f;
+    //public int CapeFlipPower = 100;
+    public float LoseHeadDefenseBuff = 80f;
 
     protected override void AssignValues()
     {
-        SpellNames = new string[] { "Cape Flip", "Snack Attack" };
-        SpellDesc = new string[] { "Scares 1 Enemy.", "Heavily Damage 1 Enemy." };
-        SpellCost = new int[] { 20, 35 };
+        SpellNames = new string[] { "Plague", "Lose Your Head" };
+        SpellDesc = new string[] { "Infects enemy with the plague. (Infected: Lose resolve and health every turn)", "Reduce damage taken this turn by 80%. Enemies target you instead." };
+        SpellCost = new int[] { 20, 30 };
     }
 
     public override void CastSpell(int spellID, List<HealthBase> TargetGroup = null)
@@ -19,29 +19,33 @@ public class MagicMonch : MagicBase
         switch (spellID)
         {
             default: // ID == 0
-                //Cape Flip Spell!
+                //Plauge Spell!
                 foreach (HealthBase target in TargetGroup)
                 {
                     EnemyResources er = target.GetComponent<EnemyResources>();
 
                     if (er != null)
                     {
-                        Debug.Log("MagicKasimir:" + this.name + " uses " + SpellCost[spellID] + " health to cast " + SpellNames[spellID] + " on " + target
-                            + " to scare them for " + CapeFlipPower + " resolve.");
-                        er.ReduceResolve(CapeFlipPower);
+                        Debug.Log("MagicMonch:" + this.name + " uses " + SpellCost[spellID] + " health to cast " + SpellNames[spellID] + " on " + target
+                            + " to infect them with the plague.");
+
+                        er.hasStatusEffect = true;
+                        er.isInfected = true;
+                        //er.Infected.Invoke();
+                        er.ChangeSprite(); //update enemy sprite on status conditon
                     }
 
                 }
                 break;
 
             case 1: // ID == 1
-                // Snack Attack Spell!
+                // Lose Head Spell!
                 foreach (HealthBase target in TargetGroup)
                 {
-                    Debug.Log("MagicKasimir:" + this.name + " uses " + SpellCost[spellID] + " health to cast " + SpellNames[spellID] + " on " + target
-                        + " dealing " + SnackAttackPower + " damage.");
-                    target.TakeDamage(SnackAttackPower);
-                    //TODO: Add health recovery for all alive players??
+                    Debug.Log("MagicMonch:" + this.name + " uses " + SpellCost[spellID] + " health to cast " + SpellNames[spellID] + " on " + target
+                        + " dealing " + LoseHeadDefenseBuff + " damage.");
+                    //target.TakeDamage(SnackAttackPower);
+                    
                 }
                 break;
         }

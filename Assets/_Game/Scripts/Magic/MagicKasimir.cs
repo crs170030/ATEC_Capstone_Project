@@ -11,7 +11,7 @@ public class MagicKasimir : MagicBase
     {
         SpellNames = new string[] { "Cape Flip", "Snack Attack" };
         SpellDesc = new string[] { "Scares 1 Enemy.", "Heavily Damage 1 Enemy." };
-        SpellCost = new int[] { 20, 35 };
+        SpellCost = new int[] { 25, 40 };
     }
 
     public override void CastSpell(int spellID, List<HealthBase> TargetGroup = null)
