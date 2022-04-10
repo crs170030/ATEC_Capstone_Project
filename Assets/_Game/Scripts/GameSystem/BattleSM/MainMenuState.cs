@@ -14,31 +14,35 @@ public class MainMenuState : BattleState
     public override void Enter()
     {
         //Debug.Log("Main menu State: ...Entering");
-        if (_mainUI != null)
-            _mainUI.SetActive(true);
+        //if (_mainUI != null)
+            //_mainUI.SetActive(true);
 
         //play menu music
         if(_menuMusic != null)
         {
-            audSauce = AudioHelper.PlayClip2D(_menuMusic, .6f);
+            //audSauce = AudioHelper.PlayClip2D(_menuMusic, .6f);
         }
 
         StateMachine.BattleUI.SetActive(false);
         //hook into events
         _activated = false;
         //Debug.Log("enter activated == " + _activated);
-        StateMachine.Input.PressedConfirm += OnPressedConfirm;
-        StateMachine.Input.PressedCancel += OnPressedCancel;
+        //StateMachine.Input.PressedConfirm += OnPressedConfirm;
+        //StateMachine.Input.PressedCancel += OnPressedCancel;
     }
 
     public override void Tick()
     {
         StateDuration += Time.deltaTime;
         //bad method: makes delays
-        if (_activated == false && StateDuration > 1)
+        if (_activated == false && StateDuration > 0)
         {
             _activated = true;
             //Debug.Log("update activated == " + _activated);
+            //
+            AudioHelper.PlayClip2D(_battleMusic, .3f);
+            StateMachine.ChangeState(StateMachine.SetupState);
+            //
         }
     }
 
@@ -47,8 +51,8 @@ public class MainMenuState : BattleState
         if (_mainUI != null)
             _mainUI.SetActive(false);
         //unhook from events
-        StateMachine.Input.PressedConfirm -= OnPressedConfirm;
-        StateMachine.Input.PressedCancel -= OnPressedCancel;
+        //StateMachine.Input.PressedConfirm -= OnPressedConfirm;
+        //StateMachine.Input.PressedCancel -= OnPressedCancel;
         _activated = false;
         //Debug.Log("Main Menu State: Exiting...");
     }
