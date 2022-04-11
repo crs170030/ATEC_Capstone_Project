@@ -49,8 +49,8 @@ public class PlayerMovement : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
-        animator.SetInteger("xInput", (int)Mathf.Ceil(h));
-        animator.SetInteger("yInput", (int)Mathf.Ceil(v));
+        animator.SetInteger("xInput", (int)Mathf.Floor(h));
+        animator.SetInteger("yInput", (int)Mathf.Floor(v));
         if(h == 0 && v == 0)
         {
             if (animator.speed > 0)
