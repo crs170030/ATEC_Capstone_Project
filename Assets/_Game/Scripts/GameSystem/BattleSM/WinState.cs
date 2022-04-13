@@ -42,6 +42,7 @@ public class WinState : BattleState
         //StateMachine.ChangeState(StateMachine.MainMenu);
 
         //reload scene!
-        SceneManager.LoadScene("GameScene");
+        //SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(0);
     }
 }

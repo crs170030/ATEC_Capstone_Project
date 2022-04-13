@@ -338,18 +338,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2088343465, guid: f3ccd06b6e9ddb44ba53eae5538a8d54, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2088343465, guid: f3ccd06b6e9ddb44ba53eae5538a8d54, type: 3}
-      propertyPath: m_BlocksRaycasts
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2088343465, guid: f3ccd06b6e9ddb44ba53eae5538a8d54, type: 3}
-      propertyPath: m_Interactable
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3762952613124839840, guid: f3ccd06b6e9ddb44ba53eae5538a8d54,
         type: 3}
       propertyPath: m_Name

@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
     float runMultiplyer = 1f;
+    float aniSlow = 0.04f;
 
     // Start is called before the first frame update
     void Start()
@@ -53,9 +54,9 @@ public class PlayerMovement : MonoBehaviour
         animator.SetInteger("yInput", (int)Mathf.Floor(v));
         if(h == 0 && v == 0)
         {
-            if (animator.speed > 0)
+            if (animator.speed > aniSlow)
             {
-                animator.speed -= 0.05f;
+                animator.speed -= aniSlow;
             }
             else
             {
@@ -68,8 +69,6 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.speed = 1;
         }
-        //animator.SetFloat("xInput", h);
-        //animator.SetFloat("yInput", v);
 
         //Running
         if (Input.GetKey(KeyCode.LeftShift) && isGrounded)

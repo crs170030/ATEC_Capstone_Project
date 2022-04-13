@@ -43,6 +43,7 @@ public class LoseState : BattleState
 
         //reload scene!
         //Application.LoadLevel(Application.loadedLevel);
-        SceneManager.LoadScene("GameScene");
+        //SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(0);
     }
 }
