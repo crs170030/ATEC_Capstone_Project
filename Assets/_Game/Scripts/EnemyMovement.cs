@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     public float lookRadius = 10f;
     [SerializeField] Animator animator = null;
     [SerializeField] LevelLoaderScript levelLoader = null;
+    [SerializeField] AudioClip _contactSound = null;
     //Rigidbody _rb;
 
     Transform target;
@@ -47,17 +48,26 @@ public class EnemyMovement : MonoBehaviour
         if (_player != null)
         {
             Debug.Log("Enemy has touched :" + _player.name);
-            //play sound
 
-            //save enemy data to battle data
+            //stop enemy from attacking if the player is frozen
+            if (_player.frozen != true)
+            {
+                //stop the player from moving
+                _player.frozen = true;
 
-            //tell the player to save their position
+                //play sound
+                AudioHelper.PlayClip2D(_contactSound, .2f);
 
-            //
+                //save enemy data to battle data
 
-            //load battle level
-            //PlayerManager.EnterBattleState();
-            levelLoader.LoadNextLevel(2);
+                //tell the player to save their position
+
+                //
+
+                //load battle level
+                //PlayerManager.EnterBattleState();
+                levelLoader.LoadNextLevel(2);
+            }
         }
     }
 

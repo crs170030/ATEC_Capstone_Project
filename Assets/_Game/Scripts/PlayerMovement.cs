@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] Camera mainCamera = null;
+    //[SerializeField] Camera mainCamera = null;
 
     [SerializeField] Animator animator = null;
 
@@ -24,17 +24,19 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
     float runMultiplyer = 1f;
     float aniSlow = 0.04f;
+    public bool frozen = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        frozen = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if(!frozen)
+            Move();
     }
 
     void Move()
