@@ -176,7 +176,7 @@ MonoBehaviour:
   - 
   - 
   SpellCost: 0000000000000000
-  CapeFlipPower: 100
+  CapeFlipPower: 90
   SnackAttackPower: 50
 --- !u!222 &2072914685
 CanvasRenderer:

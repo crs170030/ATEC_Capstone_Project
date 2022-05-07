@@ -8,6 +8,7 @@ public class SetupBattleState : BattleState
     [SerializeField] int _numberOfEnemies = 3;
     [SerializeField] EnemyBase enemyPrefab = null;
     [SerializeField] private PlayerPosSO playerSO = null;
+    //[SerializeField] BattleSM batSM = null;
     /*
     [SerializeField] CharacterBase char1 = null;
     [SerializeField] CharacterBase char2 = null;
@@ -15,6 +16,7 @@ public class SetupBattleState : BattleState
     */
     //[SerializeField] float _playerStartHealth = 100;
 
+    int randNumOfEnemies = 1;
     float enemyStartSpawnY = Screen.height - Screen.height/6;
     float enemySpacing = Screen.height/4.5f;
     
@@ -88,12 +90,19 @@ public class SetupBattleState : BattleState
             Destroy(en);
         }
 
+        //select random number between 1 and _numberOfEnemies
+        randNumOfEnemies = Random.Range(1, _numberOfEnemies+3);
+        if (randNumOfEnemies > 3)
+            randNumOfEnemies = 3;
+        //Debug.Log("Setup: Spawning "+ randNumOfEnemies + " enemies!");
+        //tell BattleSM we have fewer bad guys
+
         //spawn enemies
         var spawnY = enemyStartSpawnY;
         var spawnPosition = new Vector3(0, 0, 0);//Vector3(playerX, spawnY, 0);
         var offsetX = 0;
 
-        for (int i = 0; i < _numberOfEnemies; i++)
+        for (int i = 0; i < randNumOfEnemies; i++)
         {
             if (i % 2 == 0)
                 offsetX = 100; //enemies are pushed to the right

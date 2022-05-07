@@ -17,6 +17,8 @@ public class PlayerManager : MonoBehaviour
 
     public GameObject player;
     [SerializeField] private EnemiesKilledSO enemiesSO = null;
+    [SerializeField] AudioClip _townMusic = null;
+    //AudioSource audSauce = null;
 
     /*
     [SerializeField] LevelLoaderScript levelLoader = null;
@@ -31,6 +33,12 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
+        //play music
+        if (_townMusic != null)
+        {
+            //audSauce = AudioHelper.PlayClip2D(_townMusic, .4f);
+        }
+
         GameObject target = null;
 
         foreach (string enemyName in enemiesSO.EnemiesKilled)

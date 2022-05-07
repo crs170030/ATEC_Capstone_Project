@@ -73,7 +73,7 @@ public class CharacterBase : MonoBehaviour, ICharacterCommand
             }
 
             HealthBase hb = GetComponent<HealthBase>();
-            hb.restoreHealth(baseDamage);
+            hb.restoreHealth(baseDamage * 1.5f);
 
             ClearTargets();
         }

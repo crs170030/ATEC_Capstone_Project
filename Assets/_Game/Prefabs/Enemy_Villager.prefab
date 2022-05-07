@@ -125,7 +125,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetGroup: []
-  baseDamage: 75
+  baseDamage: 45
+  targetingMonch: 0
+  monchDamageNerf: 1
 --- !u!114 &6064428931075279768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28748dc7ff63ced40a6afdf8caf44fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 60
   _artGroup: {fileID: 7458133727329024601}
   _deathEffect: {fileID: 0}
   _deathSound: {fileID: 8300000, guid: 85585b9ad960d3e4d8f7449b1abf77ca, type: 3}

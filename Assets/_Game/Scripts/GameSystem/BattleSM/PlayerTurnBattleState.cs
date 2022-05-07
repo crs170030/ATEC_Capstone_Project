@@ -202,7 +202,7 @@ public class PlayerTurnBattleState : BattleState
             {
                 _enemyStatus.ApplyStatusConditions(er);
 
-                yield return new WaitForSeconds(pauseDuration);
+                yield return new WaitForSeconds(pauseDuration*2);
                 //check if enemy died to status
                 EnemyBase[] tempEnemies = FindObjectsOfType<EnemyBase>();
                 StateMachine.enemiesLeft = tempEnemies.Length;

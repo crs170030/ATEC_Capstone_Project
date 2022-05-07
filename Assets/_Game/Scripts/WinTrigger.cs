@@ -7,6 +7,7 @@ public class WinTrigger : MonoBehaviour
     [SerializeField] LevelLoaderScript levelLoader = null;
     [SerializeField] AudioClip _winSound = null;
     [SerializeField] GameObject _winUI = null;
+    [SerializeField] AudioSource _bgMusic = null;
 
     void Start()
     {
@@ -21,6 +22,9 @@ public class WinTrigger : MonoBehaviour
         {
             Debug.Log("Player entered Win Screen! :" + _player.name);
 
+            //stop music
+            _bgMusic.Stop();
+
             //freeze player
             _player.frozen = true;
 
@@ -28,7 +32,7 @@ public class WinTrigger : MonoBehaviour
             _winUI.SetActive(true);
 
             //play sound
-            AudioHelper.PlayClip2D(_winSound, .2f);
+            AudioHelper.PlayClip2D(_winSound, .6f);
             
             // change scene
             StartCoroutine(StopBeforeLoad());
@@ -38,7 +42,7 @@ public class WinTrigger : MonoBehaviour
     IEnumerator StopBeforeLoad()
     {
         //wait for a bit
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
 
         //load main menu
         levelLoader.LoadNextLevel(0);

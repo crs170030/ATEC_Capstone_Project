@@ -67,7 +67,7 @@ public class EnemyMovement : MonoBehaviour
                 Debug.Log(this.name + " added to hit list!");
 
                 //play sound
-                AudioHelper.PlayClip2D(_contactSound, .2f);
+                AudioHelper.PlayClip2D(_contactSound, 1f);
 
                 //save enemy data to battle data
 

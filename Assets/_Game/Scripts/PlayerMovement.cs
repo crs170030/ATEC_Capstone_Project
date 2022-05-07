@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] Animator animator = null;
     [SerializeField] private PlayerPosSO playerSO = null;
+    //[SerializeField] AudioClip _footstep = null;
+    AudioSource audSauce = null;
 
     //Rigidbody _rb = null;
     public CharacterController controller;
@@ -31,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         frozen = false;
+        audSauce = GetComponent<AudioSource>();
 
         //move player to saved position
         //default == 580, 339.29, 1131.4
@@ -42,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!frozen)
             Move();
+        else
+            audSauce.Stop();
     }
 
     void Move()
@@ -61,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetInteger("yInput", (int)Mathf.Floor(v));
         if(h == 0 && v == 0)
         {
+            audSauce.Stop();
             if (animator.speed > aniSlow)
             {
                 animator.speed -= aniSlow;
@@ -75,7 +81,12 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             animator.speed = 1;
+
+            if (!audSauce.isPlaying)
+                audSauce.Play();
         }
+
+        
         /*
         //Running
         if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
@@ -135,6 +146,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void SavePosition()
     {
+        audSauce.Stop();
         playerSO.PlayerPosition = transform.position;
     }
 }

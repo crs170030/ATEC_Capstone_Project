@@ -8,6 +8,9 @@ public class MenuController : MonoBehaviour
     [SerializeField] private PlayerPosSO playerSO = null;
     [SerializeField] private EnemiesKilledSO enemiesSO = null;
     [SerializeField] AudioClip _menuMusic = null;
+    [SerializeField] GameObject _mainMenuUI = null;
+    [SerializeField] GameObject _creditsUI = null;
+
     AudioSource audSauce = null;
 
     // Start is called before the first frame update
@@ -18,6 +21,11 @@ public class MenuController : MonoBehaviour
         {
             audSauce = AudioHelper.PlayClip2D(_menuMusic, .6f);
         }
+        if (_mainMenuUI != null)
+            _mainMenuUI.SetActive(true);
+        if (_creditsUI != null)
+            _creditsUI.SetActive(false);
+        
         //reset player's normal position
         playerSO.PlayerPosition = new Vector3(580f, 339.29f, 1131.4f);
         //give players full health
@@ -40,6 +48,25 @@ public class MenuController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             OnPressedCancel();
+        }
+
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+        {
+            ToggleMenu();
+        }
+    }
+
+    void ToggleMenu()
+    {
+        if (_mainMenuUI.activeSelf)
+        {
+            _mainMenuUI.SetActive(false);
+            _creditsUI.SetActive(true);
+        }
+        else
+        {
+            _mainMenuUI.SetActive(true);
+            _creditsUI.SetActive(false);
         }
     }
 
