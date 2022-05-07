@@ -53,11 +53,12 @@ public class EnemyMovement : MonoBehaviour
             //stop enemy from attacking if the player is frozen
             if (_player.frozen != true)
             {
-                //stop the player from moving
-                _player.frozen = true;
-
                 //tell player to save their position
                 _player.SavePosition();
+
+                //stop the player from moving
+                _player.frozen = true;
+                
 
                 //don't spawn next time
                 //var tempEnemiesKilled = enemiesSO.EnemiesKilled;

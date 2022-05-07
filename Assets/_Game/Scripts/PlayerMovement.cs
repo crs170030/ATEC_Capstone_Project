@@ -146,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void SavePosition()
     {
-        audSauce.Stop();
         playerSO.PlayerPosition = transform.position;
+        audSauce.Stop();
     }
 }
