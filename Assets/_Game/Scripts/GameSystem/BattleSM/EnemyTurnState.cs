@@ -89,9 +89,30 @@ public class EnemyTurnState : BattleState
         //else, repeat
         while(!foundTarget && StateMachine.playersAlive > 0)
         {
-            var targetNum = (int)UnityEngine.Random.Range(0, 3);
-            //activeEnemy = enemies[activeEnemyNum];
-            target = characters[targetNum];
+            if (activeEnemy.targetingMonch)
+            {
+                //find monch
+                MagicMonch[] monch = FindObjectsOfType<MagicMonch>();
+                //get monch's healthbase
+                target = monch[0].GetComponent<CharacterBase>();
+                //check if monch is alive
+                if (!target.alive)
+                {
+                    //if monch nota alive, turn off targeting and try loop again
+                    activeEnemy.targetingMonch = false;
+                }
+                else
+                {
+                    //if monch is alive, set target to them
+                }
+            }
+            else
+            {
+                var targetNum = (int)UnityEngine.Random.Range(0, 3);
+                //activeEnemy = enemies[activeEnemyNum];
+                target = characters[targetNum];
+            }
+            
             //Debug.Log("Targeting player " + targetNum + ". Who is " + target);
             if (target != null && target.alive)
             {
@@ -100,16 +121,21 @@ public class EnemyTurnState : BattleState
                 if(hb != null)
                 {
                     activeEnemy.AddTarget(hb);
+                    var damage = activeEnemy.baseDamage * activeEnemy.monchDamageNerf;
+                    //Debug.Log("active nerf = " + activeEnemy.monchDamageNerf + " targeting monch == "+ activeEnemy.targetingMonch);
+
                     //check if they are defending
-                    if(target.defending)
-                        activeEnemy.BaseAttack(activeEnemy.baseDamage / target.defense);
+                    if (target.defending)
+                        activeEnemy.BaseAttack(damage / target.defense);
                     else
-                        activeEnemy.BaseAttack(activeEnemy.baseDamage);
+                        activeEnemy.BaseAttack(damage);
                 }
                 else
                 {
                     Debug.Log("Warning: Character " + target + " hb is null!");
                 }
+                activeEnemy.targetingMonch = false;
+                activeEnemy.monchDamageNerf= 1f;
             }
         }
     }

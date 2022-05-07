@@ -55,6 +55,9 @@ public class EnemyMovement : MonoBehaviour
                 //stop the player from moving
                 _player.frozen = true;
 
+                //tell player to save their position
+                _player.SavePosition();
+
                 //play sound
                 AudioHelper.PlayClip2D(_contactSound, .2f);
 

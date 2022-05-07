@@ -9,6 +9,8 @@ public class EnemyBase : MonoBehaviour
     //public int Resolve = 100;
     float runSpeed = 25f;
     bool running = false;
+    public bool targetingMonch = false;
+    public float monchDamageNerf = 1f;
 
     // Start is called before the first frame update
     void Start()

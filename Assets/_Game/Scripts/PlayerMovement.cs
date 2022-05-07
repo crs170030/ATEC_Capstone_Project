@@ -127,4 +127,9 @@ public class PlayerMovement : MonoBehaviour
 
         return currAnimName;
     }
+
+    public void SavePosition()
+    {
+
+    }
 }

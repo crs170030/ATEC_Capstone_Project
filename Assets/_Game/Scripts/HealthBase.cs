@@ -42,7 +42,7 @@ public class HealthBase : MonoBehaviour, IDamageable<float>
         }
         //Debug.Log(this.name + " health restored!");
         var charBase = GetComponent<CharacterBase>();
-        if (charBase != null)
+        if (charBase != null && !charBase.alive)
         {
             charBase.Die(false);
             //charBase.alive = true;

@@ -96,7 +96,7 @@ public class PlayerTurnBattleState : BattleState
                     //Debug.Log(activeChar.name + " attacks!");
 
                     Attack();
-                    yield return new WaitForSeconds(pauseDuration * 1.5f);
+                    yield return new WaitForSeconds(pauseDuration * 1.5f); //1,5
                     //reset player sprite
                     activeChar.animationState = 0;
                 }

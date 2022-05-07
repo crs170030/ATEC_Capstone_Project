@@ -40,12 +40,27 @@ public class MagicMonch : MagicBase
 
             case 1: // ID == 1
                 // Lose Head Spell!
-                foreach (HealthBase target in TargetGroup)
+                //CharacterBase cb = GetComponent<CharacterBase>();
+                //cb.defence = 5;
+                EnemyBase[] enemies = FindObjectsOfType<EnemyBase>();
+
+                foreach (EnemyBase enemy in enemies)
                 {
-                    Debug.Log("MagicMonch:" + this.name + " uses " + SpellCost[spellID] + " health to cast " + SpellNames[spellID] + " on " + target
+                    /*Debug.Log("MagicMonch:" + this.name + " uses " + SpellCost[spellID] + " health to cast " + SpellNames[spellID] + " on " + target
                         + " dealing " + LoseHeadDefenseBuff + " damage.");
+                        */
                     //target.TakeDamage(SnackAttackPower);
-                    
+                    //EnemyBase eb = target.GetComponent<EnemyBase>();
+
+                    if (enemy != null)
+                    {
+                        enemy.targetingMonch = true;
+                        enemy.monchDamageNerf = .1f;
+                    }
+                    else
+                    {
+                        Debug.Log("Magic Monch: Ahh! enemy base is null");
+                    }
                 }
                 break;
         }
