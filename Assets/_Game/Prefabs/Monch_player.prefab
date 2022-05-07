@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 150, y: 150}
+  m_SizeDelta: {x: 225, y: 225}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2938094405987638627
 CanvasRenderer:
@@ -85,6 +85,8 @@ GameObject:
   - component: {fileID: 2938094405998229481}
   - component: {fileID: 2938094405998229486}
   - component: {fileID: 2938094405998229487}
+  - component: {fileID: 594008766}
+  - component: {fileID: 594008767}
   m_Layer: 5
   m_Name: Monch_player
   m_TagString: Untagged
@@ -119,17 +121,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47407d89f3abf744cae392f74bed8c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _charImage: {fileID: 2938094405987638626}
-  _normalArt: {fileID: 21300000, guid: 4b8741e80012dd04f987710d5a22fdec, type: 3}
-  _deadArt: {fileID: 21300000, guid: 4e591914221045c4ca18478656328efd, type: 3}
   _attackPlan: none
   baseDamage: 25
   spellCost: 25
   spellDamage: 50
   alive: 1
   defending: 0
+  chosenSpellID: 0
   defense: 3
   TargetGroup: []
+  charMagic: {fileID: 0}
+  animationState: 0
 --- !u!114 &2938094405998229487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,3 +151,43 @@ MonoBehaviour:
   _hurtSound: {fileID: 8300000, guid: 4ecc8014da7130a4d8b4f23f50a05310, type: 3}
   currentHealth: 0
   flashActive: 1
+--- !u!114 &594008766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2938094405998229480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88d2e50ffde7c824ebcbdbfe80c1e46a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpellNames:
+  - 
+  - 
+  SpellDesc:
+  - 
+  - 
+  SpellCost: 0000000000000000
+  LoseHeadDefenseBuff: 80
+--- !u!114 &594008767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2938094405998229480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84cfee063a2087144b30e117a012b3b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _charImage: {fileID: 2938094405987638626}
+  _normal: {fileID: 21300000, guid: 4b8741e80012dd04f987710d5a22fdec, type: 3}
+  _attack: {fileID: 21300000, guid: 763cad5a0d75cee4caa3c3f10e573be2, type: 3}
+  _magic: {fileID: 21300000, guid: 726d1377b405c684a8daba7d6b22fc04, type: 3}
+  _defend: {fileID: 21300000, guid: 344972e62a830174b9210d569fa06944, type: 3}
+  _hurt: {fileID: 21300000, guid: db08598e8b3e6c940b81b722cc5f454f, type: 3}
+  _dead: {fileID: 21300000, guid: 7c0123f56eabf634199567d6413508ca, type: 3}
+  _victory: {fileID: 21300000, guid: 586f2d4e8dd86aa43ab00e504b8b7ae1, type: 3}

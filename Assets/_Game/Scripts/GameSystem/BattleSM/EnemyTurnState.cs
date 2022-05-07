@@ -69,7 +69,7 @@ public class EnemyTurnState : BattleState
             //Debug.Log("Enemy "+ activeEnemyNum +" performs action");
             foundTarget = false;
             Attack();
-            yield return new WaitForSeconds(pauseDuration);
+            yield return new WaitForSeconds(pauseDuration*2);
             Outcome();
 
             //move active enemy back
@@ -123,7 +123,7 @@ public class EnemyTurnState : BattleState
         }
         else
         {
-            if (activeEnemyNum >= enemies.Length) { 
+            if (activeEnemyNum >= enemies.Length && StateMachine.playersAlive > 0) { 
                 //continue loop
                 StateMachine.ChangeState(StateMachine.PlanState);
             }

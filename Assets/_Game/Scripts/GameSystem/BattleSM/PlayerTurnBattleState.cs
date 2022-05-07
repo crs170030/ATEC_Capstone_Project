@@ -11,7 +11,7 @@ public class PlayerTurnBattleState : BattleState
 
     [SerializeField] Text _playerTurnTextUI = null;
 
-    [SerializeField] float _pauseDuration = 2f;
+    [SerializeField] float _pauseDuration = 3f;
 
     [SerializeField] AudioClip _attackSound = null;
     [SerializeField] AudioClip _magicSound = null;
@@ -96,24 +96,28 @@ public class PlayerTurnBattleState : BattleState
                     //Debug.Log(activeChar.name + " attacks!");
 
                     Attack();
-                    yield return new WaitForSeconds(pauseDuration);
+                    yield return new WaitForSeconds(pauseDuration * 1.5f);
+                    //reset player sprite
+                    activeChar.animationState = 0;
                 }
                 else
                 {
                     //Debug.Log("The player " + activeChar.name + " holds a defensive stance...");
                     AudioHelper.PlayClip2D(_defendSound, 1f);
+                    activeChar.animationState = 3;
                     yield return new WaitForSeconds(pauseDuration);
                 }
 
                 //move player back to start position
                 activeChar.transform.position = activeChar.transform.position + new Vector3(-hmove, 0, 0);
+                
             }
             activeCharNum++;
             //after player attacks, apply enemy status
             //ApplyEnemyStatus();
             Outcome();
         }
-        
+        yield return new WaitForSeconds(pauseDuration);
         PlayerAttackTurnEnded?.Invoke();
     }
 
@@ -211,7 +215,7 @@ public class PlayerTurnBattleState : BattleState
         }
         else
         {
-            yield return new WaitForSeconds(pauseDuration / 2);
+            yield return new WaitForSeconds(pauseDuration); // /2
 
             //Debug.Log("StatusPause: status working ==" + statusWorking);
             if (!statusWorking)

@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.speed = 1;
         }
-
+        /*
         //Running
         if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
         {
@@ -82,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
         {
             runMultiplyer = 1f;
         }
+        */
 
         //float h = Input.GetAxis("Horizontal");
         //float z = Input.GetAxis("Vertical");
@@ -92,12 +93,14 @@ public class PlayerMovement : MonoBehaviour
         //move with respect to speed and time
         controller.Move(move * (speed * runMultiplyer) * Time.deltaTime);
 
+        /*
         //jump
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             //_playerSounds.PlayOneShot(jumpSound, 1f);
         }
+        */
 
         //set velocity to gravity
         velocity.y += gravity * Time.deltaTime;

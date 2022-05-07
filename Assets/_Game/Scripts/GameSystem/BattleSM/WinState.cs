@@ -21,6 +21,8 @@ public class WinState : BattleState
         //audSauce.Stop();
         AudioHelper.PlayClip2D(_winSound, 1f);
 
+        ChangePlayerSprites();
+
         //hook into events
         StateMachine.Input.PressedConfirm += OnPressedConfirm;
     }
@@ -33,6 +35,16 @@ public class WinState : BattleState
         StateMachine.Input.PressedConfirm -= OnPressedConfirm;
 
         //Debug.Log("Win State: Exiting to Main Menu...");
+    }
+
+    void ChangePlayerSprites()
+    {
+        CharacterBase[] players = FindObjectsOfType<CharacterBase>();
+        foreach (CharacterBase cb in players)
+        {
+            if(cb.alive)
+                cb.animationState = 6;
+        }
     }
 
     void OnPressedConfirm()

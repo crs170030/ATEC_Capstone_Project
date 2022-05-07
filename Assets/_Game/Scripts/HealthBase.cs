@@ -134,16 +134,33 @@ public class HealthBase : MonoBehaviour, IDamageable<float>
 
     private IEnumerator flashArt(GameObject artGroup)
     {
-        //do we still want things to flash when they take damage?
-        if (flashActive)
+        var charBase = GetComponent<CharacterBase>();
+        if (charBase != null)
         {
-            //Debug.Log("Starting flash");
-            for (int i = 0; i < repeatNum; i++)
+            charBase.animationState = 4;
+            yield return new WaitForSeconds(.7f);
+
+            if (charBase.alive)
             {
-                artGroup.SetActive(false);
-                yield return new WaitForSeconds(.05f);
-                artGroup.SetActive(true);
-                yield return new WaitForSeconds(.1f);
+                if (charBase.defending)
+                    charBase.animationState = 3;
+                else
+                    charBase.animationState = 0;
+            }
+        }
+        else
+        {
+            //do we still want things to flash when they take damage?
+            if (flashActive)
+            {
+                //Debug.Log("Starting flash");
+                for (int i = 0; i < repeatNum; i++)
+                {
+                    artGroup.SetActive(false);
+                    yield return new WaitForSeconds(.05f);
+                    artGroup.SetActive(true);
+                    yield return new WaitForSeconds(.1f);
+                }
             }
         }
     }

@@ -7,7 +7,7 @@ public class EnemyBase : MonoBehaviour
     public HealthBase[] TargetGroup = null;
     public float baseDamage = 25;
     //public int Resolve = 100;
-    float runSpeed = 50f;
+    float runSpeed = 25f;
     bool running = false;
 
     // Start is called before the first frame update

@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class CharacterBase : MonoBehaviour, ICharacterCommand
 {
-    [SerializeField] Image _charImage = null;
-    [SerializeField] Sprite _normalArt = null;
-    [SerializeField] Sprite _deadArt = null;
+    //[SerializeField] Image _charImage = null;
+    //[SerializeField] Sprite _normalArt = null;
+    //[SerializeField] Sprite _deadArt = null;
     public string _attackPlan = "none";
     public float baseDamage = 25;
     public float spellCost = 25;
@@ -23,12 +23,32 @@ public class CharacterBase : MonoBehaviour, ICharacterCommand
     public MagicBase charMagic = null;
     //ref to change state machine tracker
 
+    public int animationState = 0;
+    //Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
+        animationState = 0;
         _attackPlan = "none";
         charMagic = GetComponent<MagicBase>();
+
+        //animator = GetComponent<Animator>();
     }
+
+    /*
+    void Update()
+    {
+        //make sure character animator has correct state num
+        if (animator != null)
+        {
+            if (animator.GetInteger("CharacterState") != animationState)
+                Debug.Log(this + " updating CharacterState from "+ animator.GetInteger("CharacterState") + " to " + animationState);
+
+            animator.SetInteger("CharacterState", animationState);
+        }
+    }
+    */
 
     public void SetAction(string attackPlan)
     {
@@ -42,6 +62,7 @@ public class CharacterBase : MonoBehaviour, ICharacterCommand
 
     public void BaseAttack()
     {
+        animationState = 1;
         //apply base Damage to list of targets
         if (TargetGroup != null)
         {
@@ -50,6 +71,9 @@ public class CharacterBase : MonoBehaviour, ICharacterCommand
                 Debug.Log(this.name + " deals " + baseDamage + " damage to " + target);
                 target.TakeDamage(baseDamage);
             }
+
+            HealthBase hb = GetComponent<HealthBase>();
+            hb.restoreHealth(baseDamage);
 
             ClearTargets();
         }
@@ -61,6 +85,8 @@ public class CharacterBase : MonoBehaviour, ICharacterCommand
 
     public void MagicAttack()
     {
+        animationState = 2;
+
         //takes list of targets and applies effects to them
         //each character needs a different spell, use switch statement on parent name?
         if(charMagic != null)
@@ -114,13 +140,19 @@ public class CharacterBase : MonoBehaviour, ICharacterCommand
         //change sprite if the player is dead
         if (alive)
         {
+            animationState = 0;
+            /*
             if (_charImage != null && _normalArt != null)
                 _charImage.sprite = _normalArt;
+                */
         }
         else
         {
+            animationState = 5;
+            /*
             if (_charImage != null && _deadArt != null)
                 _charImage.sprite = _deadArt;
+                */
         }
     }
 

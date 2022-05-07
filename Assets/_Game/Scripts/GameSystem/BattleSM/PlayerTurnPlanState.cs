@@ -130,6 +130,9 @@ public class PlayerTurnPlanState : BattleState
                 if (activeChar.defending)
                 {
                     //StateMachine.mana += defenseManaAmount;
+                    //change player sprite
+                    //activeChar.animationState = 3;
+
                     activeCharHB.restoreHealth(defenseManaAmount);
                     OnPressedConfirm();
                 }
@@ -408,6 +411,7 @@ public class PlayerTurnPlanState : BattleState
                 _selectionBorder.transform.position = _defendButton.transform.position;
                 activeChar._attackPlan = "defend";
                 activeChar.defending = true;
+
                 break;
         }
         //Debug.Log(activeChar + " set to " + button + ", defending == " + activeChar.defending);
@@ -443,7 +447,8 @@ public class PlayerTurnPlanState : BattleState
                 {
                     activeCharNum = 1;
                     activeChar = _char1;
-                    if(forward)
+                    activeChar.animationState = 0;
+                    if (forward)
                         SetActiveButtonValues("attack");
                 }
                 else
@@ -464,6 +469,7 @@ public class PlayerTurnPlanState : BattleState
                 {
                     activeCharNum = 2;
                     activeChar = _char2;
+                    activeChar.animationState = 0;
                     if (forward)
                         SetActiveButtonValues("attack");
                 }
@@ -486,6 +492,7 @@ public class PlayerTurnPlanState : BattleState
                 {
                     activeCharNum = 3;
                     activeChar = _char3;
+                    activeChar.animationState = 0;
                     if (forward)
                         SetActiveButtonValues("attack");
                 }

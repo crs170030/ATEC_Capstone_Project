@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3037205678980908144
 CanvasRenderer:
@@ -85,6 +85,8 @@ GameObject:
   - component: {fileID: 3037205679901997314}
   - component: {fileID: 3037205679901997317}
   - component: {fileID: 3037205679901997316}
+  - component: {fileID: 556407769}
+  - component: {fileID: 556407770}
   m_Layer: 5
   m_Name: Phoebe_player
   m_TagString: Untagged
@@ -119,17 +121,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47407d89f3abf744cae392f74bed8c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _charImage: {fileID: 3037205678980908145}
-  _normalArt: {fileID: 21300000, guid: 790ad9e6d8143b448b189de5026aaedd, type: 3}
-  _deadArt: {fileID: 21300000, guid: 4e591914221045c4ca18478656328efd, type: 3}
   _attackPlan: none
   baseDamage: 25
   spellCost: 25
   spellDamage: 50
   alive: 1
   defending: 0
+  chosenSpellID: 0
   defense: 3
   TargetGroup: []
+  charMagic: {fileID: 0}
+  animationState: 0
 --- !u!114 &3037205679901997316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,3 +151,44 @@ MonoBehaviour:
   _hurtSound: {fileID: 8300000, guid: 4ecc8014da7130a4d8b4f23f50a05310, type: 3}
   currentHealth: 0
   flashActive: 1
+--- !u!114 &556407769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3037205679901997315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9259ec33cb6499642914219a3988d8d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpellNames:
+  - 
+  - 
+  SpellDesc:
+  - 
+  - 
+  SpellCost: 0000000000000000
+  AllBarkPower: 50
+  AllBitePower: 30
+--- !u!114 &556407770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3037205679901997315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84cfee063a2087144b30e117a012b3b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _charImage: {fileID: 3037205678980908145}
+  _normal: {fileID: 21300000, guid: 790ad9e6d8143b448b189de5026aaedd, type: 3}
+  _attack: {fileID: 21300000, guid: bfacb25855ff1324e9d7af50fc92a49c, type: 3}
+  _magic: {fileID: 21300000, guid: 45b0398b9e513004e8addb5f198db1ea, type: 3}
+  _defend: {fileID: 21300000, guid: f055da8071cf412418a4662b61e7da16, type: 3}
+  _hurt: {fileID: 21300000, guid: d5b0635c6ce9e0449bf4778a8eb8758e, type: 3}
+  _dead: {fileID: 21300000, guid: 6998779cacb2bde45bf16e565e27927d, type: 3}
+  _victory: {fileID: 21300000, guid: 06f09f932ef4f1e4cbc93f1ff43cd7c7, type: 3}
