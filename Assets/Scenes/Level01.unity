@@ -109,7 +109,7 @@ NavMeshSettings:
     agentRadius: 0.4
     agentHeight: 2
     agentSlope: 45
-    agentClimb: 0.5
+    agentClimb: 1
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -682,7 +682,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.2
 --- !u!222 &48129383
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7924,6 +7924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1084182104}
+  playerSO: {fileID: 11400000, guid: 7877f67b6309a3c4e9299a5cc956e592, type: 2}
   controller: {fileID: 843314341}
   speed: 10
   run: 2.5
@@ -11294,7 +11295,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4b8741e80012dd04f987710d5a22fdec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 586f2d4e8dd86aa43ab00e504b8b7ae1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16237,7 +16238,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 35f62cf47dc98ad4d898b758bc897393, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8bffcc212e8a10b43aacecc257c59158, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19857,6 +19858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 843314338}
+  enemiesSO: {fileID: 11400000, guid: b431932ad99346648bffcb913a5be806, type: 2}
 --- !u!1 &1951896532
 GameObject:
   m_ObjectHideFlags: 0
@@ -21450,7 +21452,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 790ad9e6d8143b448b189de5026aaedd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 06f09f932ef4f1e4cbc93f1ff43cd7c7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -5,6 +5,8 @@ using UnityEngine;
 public class MenuController : MonoBehaviour
 {
     [SerializeField] LevelLoaderScript levelLoader = null;
+    [SerializeField] private PlayerPosSO playerSO = null;
+    [SerializeField] private EnemiesKilledSO enemiesSO = null;
     [SerializeField] AudioClip _menuMusic = null;
     AudioSource audSauce = null;
 
@@ -16,6 +18,15 @@ public class MenuController : MonoBehaviour
         {
             audSauce = AudioHelper.PlayClip2D(_menuMusic, .6f);
         }
+        //reset player's normal position
+        playerSO.PlayerPosition = new Vector3(580f, 339.29f, 1131.4f);
+        //give players full health
+        playerSO.KazHealth = 100f;
+        playerSO.PhoebeHealth = 100f;
+        playerSO.MonchHealth = 100f;
+
+        //reset enemies
+        enemiesSO.EnemiesKilled = new ArrayList();
     }
 
     // Update is called once per frame

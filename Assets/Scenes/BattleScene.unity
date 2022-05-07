@@ -4521,7 +4521,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.5
-  m_Text: "You Win! \n\nPress Space to Return to the Main Menu"
+  m_Text: "You Win! \n\nPress Space to Continue..."
 --- !u!222 &1711114832
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4836,6 +4836,7 @@ MonoBehaviour:
   _numberOfEnemies: 3
   enemyPrefab: {fileID: 7458133728218697781, guid: f9d9d3610d8ebe143b66d7fa2d1fd5ca,
     type: 3}
+  playerSO: {fileID: 11400000, guid: 7877f67b6309a3c4e9299a5cc956e592, type: 2}
 --- !u!114 &1885010286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4965,6 +4966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _winTextUI: {fileID: 1711114831}
   _winSound: {fileID: 8300000, guid: 7e66c4b6515b79b4ca59995a1ca55dd1, type: 3}
+  playerSO: {fileID: 11400000, guid: 7877f67b6309a3c4e9299a5cc956e592, type: 2}
 --- !u!1 &1890587273
 GameObject:
   m_ObjectHideFlags: 0

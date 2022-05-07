@@ -8,7 +8,16 @@ public class WinState : BattleState
 {
     [SerializeField] Text _winTextUI = null;
     [SerializeField] AudioClip _winSound = null;
+    [SerializeField] private PlayerPosSO playerSO = null;
     //AudioSource audSauce = null;
+
+    MagicKasimir kaz;
+    MagicPhoebe pho;
+    MagicMonch mon;
+
+    HealthBase kazHB;
+    HealthBase phoHB;
+    HealthBase monHB;
 
     public override void Enter()
     {
@@ -47,14 +56,39 @@ public class WinState : BattleState
         }
     }
 
+    void SavePlayerHealth()
+    {
+        kaz = FindObjectOfType<MagicKasimir>();
+        pho = FindObjectOfType<MagicPhoebe>();
+        mon = FindObjectOfType<MagicMonch>();
+
+        if (kaz != null && pho != null && mon != null)
+        {
+            kazHB = kaz.GetComponent<HealthBase>();
+            phoHB = pho.GetComponent<HealthBase>();
+            monHB = mon.GetComponent<HealthBase>();
+
+            //save all character health!
+
+            playerSO.KazHealth = kazHB.currentHealth;
+            
+            playerSO.PhoebeHealth = phoHB.currentHealth;
+           
+            playerSO.MonchHealth = monHB.currentHealth;
+        }
+    }
+
     void OnPressedConfirm()
     {
         //Debug.Log("Attempt to Enter Player Attack State!");
         //change to player attack state
         //StateMachine.ChangeState(StateMachine.MainMenu);
 
+        SavePlayerHealth();
+
+
         //reload scene!
         //SceneManager.LoadScene("GameScene");
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }

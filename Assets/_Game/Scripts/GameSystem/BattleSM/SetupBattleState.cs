@@ -7,6 +7,7 @@ public class SetupBattleState : BattleState
     [SerializeField] Transform UIGroup = null;
     [SerializeField] int _numberOfEnemies = 3;
     [SerializeField] EnemyBase enemyPrefab = null;
+    [SerializeField] private PlayerPosSO playerSO = null;
     /*
     [SerializeField] CharacterBase char1 = null;
     [SerializeField] CharacterBase char2 = null;
@@ -20,6 +21,14 @@ public class SetupBattleState : BattleState
     //float playerX = -600;
     float enemyX = Screen.width - Screen.width/5;
     bool _activated = false;
+
+    MagicKasimir kaz;
+    MagicPhoebe pho;
+    MagicMonch mon;
+
+    HealthBase kazHB;
+    HealthBase phoHB;
+    HealthBase monHB;
 
     public override void Enter()
     {
@@ -35,12 +44,17 @@ public class SetupBattleState : BattleState
         //Debug.Log("enemy X ==" + enemyX);
         //Debug.Log("enemy Y ==" + enemyStartSpawnY + " screen height == " + Screen.height);
         SpawnCharacters();
+        /*
         //restore health of all
         var entities = FindObjectsOfType<HealthBase>();
         foreach (HealthBase hb in entities)
         {
             hb.restoreHealth();
         }
+        */
+        //set player health to each character
+        
+
         //Cant change state while in Enter or Exit
         //don't but change state here
         _activated = false;
@@ -52,6 +66,7 @@ public class SetupBattleState : BattleState
         //bad method: makes delays
         if (_activated == false)
         {
+            SetPlayerHealth();
             _activated = true;
             StateMachine.ChangeState(StateMachine.PlanState);
             //Debug.Log("Setup: ...Updating...");
@@ -92,6 +107,34 @@ public class SetupBattleState : BattleState
             spawnY -= enemySpacing;
             //move enemy to back of UI
             inst.transform.SetAsFirstSibling();
+        }
+    }
+
+    void SetPlayerHealth()
+    {
+        kaz = FindObjectOfType<MagicKasimir>();
+        pho = FindObjectOfType<MagicPhoebe>();
+        mon = FindObjectOfType<MagicMonch>();
+
+        if (kaz != null && pho != null && mon != null)
+        {
+            kazHB = kaz.GetComponent<HealthBase>();
+            phoHB = pho.GetComponent<HealthBase>();
+            monHB = mon.GetComponent<HealthBase>();
+
+            kazHB.ReduceHealth(100 - playerSO.KazHealth);
+            phoHB.ReduceHealth(100 - playerSO.PhoebeHealth);
+            monHB.ReduceHealth(100 - playerSO.MonchHealth);
+            //set all character health!
+            /*
+            kazHB.currentHealth = playerSO.KazHealth;
+            phoHB.currentHealth = playerSO.PhoebeHealth;
+            monHB.currentHealth = playerSO.MonchHealth;
+            */
+        }
+        else
+        {
+            Debug.Log("Setup Battle State: ERROR! Player health base not found!");
         }
     }
 }

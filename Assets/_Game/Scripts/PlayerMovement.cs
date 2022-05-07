@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     //[SerializeField] Camera mainCamera = null;
 
     [SerializeField] Animator animator = null;
+    [SerializeField] private PlayerPosSO playerSO = null;
 
     //Rigidbody _rb = null;
     public CharacterController controller;
@@ -30,6 +31,10 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         frozen = false;
+
+        //move player to saved position
+        //default == 580, 339.29, 1131.4
+        transform.position = playerSO.PlayerPosition;
     }
 
     // Update is called once per frame
@@ -130,6 +135,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void SavePosition()
     {
-
+        playerSO.PlayerPosition = transform.position;
     }
 }

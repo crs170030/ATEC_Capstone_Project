@@ -316,6 +316,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLoader: {fileID: 721845800}
+  playerSO: {fileID: 11400000, guid: 7877f67b6309a3c4e9299a5cc956e592, type: 2}
+  enemiesSO: {fileID: 11400000, guid: b431932ad99346648bffcb913a5be806, type: 2}
   _menuMusic: {fileID: 8300000, guid: 7c34cc377604f9e448589984526a52d1, type: 3}
 --- !u!4 &675491908
 Transform:

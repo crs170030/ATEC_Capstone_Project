@@ -9,6 +9,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] Animator animator = null;
     [SerializeField] LevelLoaderScript levelLoader = null;
     [SerializeField] AudioClip _contactSound = null;
+    [SerializeField] private EnemiesKilledSO enemiesSO = null;
     //Rigidbody _rb;
 
     Transform target;
@@ -57,6 +58,13 @@ public class EnemyMovement : MonoBehaviour
 
                 //tell player to save their position
                 _player.SavePosition();
+
+                //don't spawn next time
+                //var tempEnemiesKilled = enemiesSO.EnemiesKilled;
+                //enemiesSO.EnemiesKilled.Add(this.targetObjectId);
+                //enemiesSO.EnemiesKilled.Add(this.GetInstanceID());
+                enemiesSO.EnemiesKilled.Add(this.name);
+                Debug.Log(this.name + " added to hit list!");
 
                 //play sound
                 AudioHelper.PlayClip2D(_contactSound, .2f);

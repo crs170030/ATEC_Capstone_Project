@@ -30,7 +30,7 @@ public class HealthBase : MonoBehaviour, IDamageable<float>
 
     public void restoreHealth(float restoreAmount = 100f)
     {
-        if (restoreAmount == 100f)
+        if (restoreAmount == 100f || currentHealth + restoreAmount >= maxHealth)
         {
             currentHealth = maxHealth;
             ToMaxHealth.Invoke(maxHealth);
@@ -96,9 +96,15 @@ public class HealthBase : MonoBehaviour, IDamageable<float>
             calledHalfHealth = true;
         }
 
+        /*
         //try to safeguard in case the health is too low
         if (currentHealth <= 0)
             currentHealth = 1;
+        */
+        if (currentHealth <= 0)
+        {
+            Kill();
+        }
     }
 
     public void Kill()
